@@ -118,6 +118,12 @@ $ npm run start:prod | yarn start:prod
 
 ```
 
+You can run a local mongodb using docker:
+
+```
+docker run --name mongodb -d -p 27017:27017 mongodb/mongodb-community-server
+```
+
 ## Run SSR
 
 *Run script in root folder*

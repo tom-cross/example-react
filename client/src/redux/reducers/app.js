@@ -3,13 +3,13 @@ import {
   ENUM_STATUS,
   genericType,
   LOADING_APP,
-} from "../actions";
+} from '../actions'
 
 const initReducer = {
   isAuthenticated: false,
   loading: true,
-  currentType: "",
-};
+  currentType: '',
+}
 
 export const AppReducer = (state = initReducer, { type, payload }) => {
   switch (type) {
@@ -18,14 +18,14 @@ export const AppReducer = (state = initReducer, { type, payload }) => {
         ...state,
         currentType: type,
         isAuthenticated: payload,
-      };
+      }
     case genericType(LOADING_APP, ENUM_STATUS.PUSH_NORMAL):
       return {
         ...state,
         currentType: type,
         loading: payload,
-      };
+      }
     default:
-      return Object.assign({}, state);
+      return Object.assign({}, state)
   }
-};
+}

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 import {
   IconButton,
   Input,
   InputGroup,
   InputRightElement,
-} from "@chakra-ui/react";
-import { IoSendOutline } from "react-icons/io5";
+} from '@chakra-ui/react'
+import { IoSendOutline } from 'react-icons/io5'
 
 export default function ChatForm() {
   function handleSendMessage() {}
@@ -25,5 +25,5 @@ export default function ChatForm() {
         />
       </InputRightElement>
     </InputGroup>
-  );
+  )
 }

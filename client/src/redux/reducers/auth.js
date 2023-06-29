@@ -6,13 +6,13 @@ import {
   REGISTER,
   LOGIN,
   VERITY_OTP,
-} from "../actions";
+} from '../actions'
 
 const initReducer = {
   loading: false, // property loading internal
-  currentType: "",
-  messageError: "",
-};
+  currentType: '',
+  messageError: '',
+}
 
 export const AuthReducer = (state = initReducer, { type, payload }) => {
   switch (type) {
@@ -24,8 +24,8 @@ export const AuthReducer = (state = initReducer, { type, payload }) => {
         ...state,
         loading: true,
         currentType: type,
-        messageError: "",
-      };
+        messageError: '',
+      }
     case genericType(LOGIN, ENUM_STATUS.SUCCESS):
     case genericType(CHECKING_AUTH, ENUM_STATUS.SUCCESS):
     case genericType(REGISTER, ENUM_STATUS.SUCCESS):
@@ -34,9 +34,9 @@ export const AuthReducer = (state = initReducer, { type, payload }) => {
       return {
         ...state,
         currentType: type,
-        messageError: "",
+        messageError: '',
         loading: false,
-      };
+      }
     case genericType(LOGIN, ENUM_STATUS.FAILURE):
     case genericType(REGISTER, ENUM_STATUS.FAILURE):
     case genericType(FORGOT_PASSWORD, ENUM_STATUS.FAILURE):
@@ -46,15 +46,15 @@ export const AuthReducer = (state = initReducer, { type, payload }) => {
         messageError: payload,
         currentType: type,
         loading: false,
-      };
+      }
     case genericType(LOGIN, ENUM_STATUS.RESET):
       return {
         ...state,
         ...initReducer,
         currentType: type,
         loading: false,
-      };
+      }
     default:
-      return Object.assign({}, state);
+      return Object.assign({}, state)
   }
-};
+}

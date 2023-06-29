@@ -8,16 +8,16 @@ import {
   InputGroup,
   InputRightElement,
   useColorMode,
-} from "@chakra-ui/react";
-import React, { memo } from "react";
-import { Controller } from "react-hook-form";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+} from '@chakra-ui/react'
+import React, { memo } from 'react'
+import { Controller } from 'react-hook-form'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 export function ControlInputComp({
   name,
   control,
   rules,
-  errorMessage = "",
+  errorMessage = '',
   label,
   placeholder = name,
   type,
@@ -26,12 +26,12 @@ export function ControlInputComp({
   children,
   ...rest
 }) {
-  const [show, setShow] = React.useState(false);
-  const handleShowInput = () => setShow(!show);
-  const { colorMode } = useColorMode();
+  const [show, setShow] = React.useState(false)
+  const handleShowInput = () => setShow(!show)
+  const { colorMode } = useColorMode()
 
   function checkTypeInput() {
-    return isPassword && !show ? "password" : type || "text";
+    return isPassword && !show ? 'password' : type || 'text'
   }
 
   return (
@@ -47,7 +47,7 @@ export function ControlInputComp({
               {...field}
               {...rest}
               type={checkTypeInput()}
-              color={colorMode === "light" ? "black" : "white"}
+              color={colorMode === 'light' ? 'black' : 'white'}
               placeholder={placeholder}
             >
               {children}
@@ -65,7 +65,7 @@ export function ControlInputComp({
         </FormControl>
       )}
     />
-  );
+  )
 }
 
-export default memo(ControlInputComp);
+export default memo(ControlInputComp)

@@ -4,33 +4,33 @@ import {
   InputGroup,
   InputRightElement,
   Spinner,
-} from "@chakra-ui/react";
-import React, { useCallback, useRef, useState } from "react";
-import SuggestList from "./SuggestList";
-import { useClickAway } from "react-use";
-import { SearchService } from "../../services";
-import { debounce } from "lodash";
-import { AiOutlineClose } from "react-icons/ai";
+} from '@chakra-ui/react'
+import React, { useCallback, useRef, useState } from 'react'
+import SuggestList from './SuggestList'
+import { useClickAway } from 'react-use'
+import { SearchService } from '../../services'
+import { debounce } from 'lodash'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export default function SearchHeader() {
-  const [isFocus, setIsFocus] = useState(false);
-  const [txtSearch, setTxtSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
-  const ref = useRef(null);
+  const [isFocus, setIsFocus] = useState(false)
+  const [txtSearch, setTxtSearch] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [results, setResults] = useState([])
+  const ref = useRef(null)
 
   useClickAway(ref, () => {
-    setIsFocus(false);
+    setIsFocus(false)
 
     if (!txtSearch) {
-      setResults([]);
+      setResults([])
     }
-  });
+  })
 
   function onChangeSearch(value) {
-    setTxtSearch(value);
+    setTxtSearch(value)
     if (value) {
-      debouncedSearch(value);
+      debouncedSearch(value)
     }
   }
 
@@ -48,8 +48,8 @@ export default function SearchHeader() {
 
   const debouncedSearch = useCallback(
     () => debounce((nextValue) => searchUserWithInput(nextValue), 1000),
-    []
-  );
+    [],
+  )
 
   return (
     <Box className="w-2/5 relative" ref={ref}>
@@ -66,7 +66,7 @@ export default function SearchHeader() {
             loading ? (
               <Spinner />
             ) : (
-              <AiOutlineClose onClick={() => onChangeSearch("")} />
+              <AiOutlineClose onClick={() => onChangeSearch('')} />
             )
           }
         />
@@ -74,5 +74,5 @@ export default function SearchHeader() {
 
       {isFocus && <SuggestList results={results} />}
     </Box>
-  );
+  )
 }

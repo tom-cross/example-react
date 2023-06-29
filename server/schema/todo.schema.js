@@ -1,14 +1,15 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const uuid = require("node-uuid");
-const { STATUS_TODO } = require("../constants");
+const mongoose = require('mongoose')
+
+const { Schema } = mongoose
+const uuid = require('node-uuid')
+const { STATUS_TODO } = require('../constants')
 
 const todoSchema = new Schema(
   {
     _id: {
       type: String,
-      default: function () {
-        return uuid.v4();
+      default() {
+        return uuid.v4()
       },
     },
     title: String,
@@ -21,7 +22,7 @@ const todoSchema = new Schema(
   },
   {
     timestamps: true,
-  }
-);
+  },
+)
 
-module.exports = mongoose.model("todo", todoSchema);
+module.exports = mongoose.model('todo', todoSchema)

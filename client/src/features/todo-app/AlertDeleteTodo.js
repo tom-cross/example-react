@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Button,
   AlertDialog,
@@ -9,17 +9,17 @@ import {
   AlertDialogBody,
   AlertDialogFooter,
   useToast,
-} from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { DELETE_TODO, ENUM_STATUS, genericAction } from "../../redux/actions";
-import { todoSelector } from "../../redux/selector";
+} from '@chakra-ui/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { DELETE_TODO, ENUM_STATUS, genericAction } from '../../redux/actions'
+import { todoSelector } from '../../redux/selector'
 
 export default function AlertDeleteTodo({ todo, onClose, isOpen }) {
-  const cancelRef = React.useRef();
-  const dispatch = useDispatch();
-  const toast = useToast();
+  const cancelRef = React.useRef()
+  const dispatch = useDispatch()
+  const toast = useToast()
 
-  const { status: statusType } = useSelector(todoSelector);
+  const { status: statusType } = useSelector(todoSelector)
 
   const onSubmit = () => {
     dispatch(
@@ -28,9 +28,9 @@ export default function AlertDeleteTodo({ todo, onClose, isOpen }) {
         toast,
         onClose,
         statusType,
-      })
-    );
-  };
+      }),
+    )
+  }
   return (
     <AlertDialog
       motionPreset="slideInBottom"
@@ -58,5 +58,5 @@ export default function AlertDeleteTodo({ todo, onClose, isOpen }) {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  )
 }

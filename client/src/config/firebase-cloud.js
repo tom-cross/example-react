@@ -1,7 +1,7 @@
 // // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app'
 // import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { getStorage } from 'firebase/storage';
+import { getStorage } from 'firebase/storage'
 
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
@@ -16,14 +16,14 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-};
+}
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 // const analytics = getAnalytics(app);
 // const auth = getAuth();
 
-export const storage = getStorage(app);
+export const storage = getStorage(app)
 
 // export const providerGoogle = new GoogleAuthProvider();
 // providerGoogle.setCustomParameters({ prompt: "select_account" });

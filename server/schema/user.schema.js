@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const uuid = require("node-uuid");
+const mongoose = require('mongoose')
+
+const { Schema } = mongoose
+const uuid = require('node-uuid')
 
 const userSchema = new Schema(
   {
@@ -24,7 +25,7 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
-  }
-);
+  },
+)
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model('user', userSchema)

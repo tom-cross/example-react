@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   Box,
   Button,
@@ -10,36 +10,36 @@ import {
   InputRightElement,
   Spinner,
   Stack,
-} from "@chakra-ui/react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { Notify } from "notiflix";
-import { serviceClient } from "./../../services";
-import { StatusCode } from "../../constants";
+} from '@chakra-ui/react'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { Notify } from 'notiflix'
+import { serviceClient } from './../../services'
+import { StatusCode } from '../../constants'
 
 export default function FormSelectParticipants({ onNext }) {
-  const [textSearch, setTextSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [textSearch, setTextSearch] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [users, setUsers] = useState([])
+  const [selected, setSelected] = useState([])
 
   async function handleSearchUser() {
     try {
-      setLoading(true);
-      const response = await serviceClient._userService.searchUser(textSearch);
-      setLoading(false);
-      setSelected([]);
+      setLoading(true)
+      const response = await serviceClient._userService.searchUser(textSearch)
+      setLoading(false)
+      setSelected([])
       if (response?.status === StatusCode.Success) {
-        setUsers(response.data.data);
+        setUsers(response.data.data)
       }
     } catch (e) {
-      setLoading(false);
-      Notify.failure(e.message);
+      setLoading(false)
+      Notify.failure(e.message)
     }
   }
 
   const handleNextForm = () => {
-    onNext({ participants: selected });
-  };
+    onNext({ participants: selected })
+  }
 
   return (
     <Box>
@@ -92,5 +92,5 @@ export default function FormSelectParticipants({ onNext }) {
         </Button>
       </Flex>
     </Box>
-  );
+  )
 }

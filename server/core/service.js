@@ -1,4 +1,4 @@
-const ConsoleLogger = require("./consoleLogger");
+const ConsoleLogger = require('./consoleLogger')
 
 /**
  * @Service
@@ -8,10 +8,10 @@ const ConsoleLogger = require("./consoleLogger");
  * */
 class Service {
   constructor() {
-    ConsoleLogger.warn(`Instance Service ${this.constructor.name} has loaded!`);
+    ConsoleLogger.warn(`Instance Service ${this.constructor.name} has loaded!`)
   }
 
   // implement static method for service
 }
 
-module.exports = Service;
+module.exports = Service

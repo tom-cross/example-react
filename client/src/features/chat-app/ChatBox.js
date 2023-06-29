@@ -1,14 +1,14 @@
-import React from "react";
-import ChatForm from "./ChatForm";
-import { Box } from "@chakra-ui/react";
-import ChatMessage from "./ChatMessage";
+import React from 'react'
+import ChatForm from './ChatForm'
+import { Box } from '@chakra-ui/react'
+import ChatMessage from './ChatMessage'
 
 export default function ChatBox({ messages = [] }) {
   return (
     <Box
-      maxW={"400px"}
-      h={"25rem"}
-      mx={"auto"}
+      maxW={'400px'}
+      h={'25rem'}
+      mx={'auto'}
       className="w-full border rounded-md flex flex-col justify-between"
     >
       <div className="flex-1 overflow-y-auto p-5 space-y-5">
@@ -18,5 +18,5 @@ export default function ChatBox({ messages = [] }) {
       </div>
       <ChatForm />
     </Box>
-  );
+  )
 }

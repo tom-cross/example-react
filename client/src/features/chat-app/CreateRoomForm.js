@@ -5,60 +5,60 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { FiUsers } from "react-icons/fi";
-import { AiOutlineFileDone } from "react-icons/ai";
-import { MdMeetingRoom } from "react-icons/md";
-import { Step, Steps, useSteps } from "chakra-ui-steps";
-import FormRoomName from "./FormRoomName";
-import FormSelectParticipants from "./FormSelectParticipants";
-import ConfirmCreateRoom from "./ConfirmCreateRoom";
+} from '@chakra-ui/react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { FiUsers } from 'react-icons/fi'
+import { AiOutlineFileDone } from 'react-icons/ai'
+import { MdMeetingRoom } from 'react-icons/md'
+import { Step, Steps, useSteps } from 'chakra-ui-steps'
+import FormRoomName from './FormRoomName'
+import FormSelectParticipants from './FormSelectParticipants'
+import ConfirmCreateRoom from './ConfirmCreateRoom'
 
 export default function CreateRoomForm({ isOpen, onClose }) {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
   const [roomForm, setRoomForm] = useState({
-    name: "",
+    name: '',
     participants: [],
-  });
+  })
 
   const { nextStep, reset, activeStep } = useSteps({
     initialStep: 0,
-  });
+  })
 
   const steps = [
-    { label: "Room name", icon: MdMeetingRoom },
-    { label: "Participants", icon: FiUsers },
-    { label: "Submit", icon: AiOutlineFileDone },
-  ];
+    { label: 'Room name', icon: MdMeetingRoom },
+    { label: 'Participants', icon: FiUsers },
+    { label: 'Submit', icon: AiOutlineFileDone },
+  ]
 
   function handleNextForm(data) {
     setRoomForm({
       ...roomForm,
       ...data,
-    });
-    nextStep();
+    })
+    nextStep()
   }
 
   function submitCreateForm() {
-    console.log("show data : ", roomForm);
+    console.log('show data : ', roomForm)
   }
 
   function handleCloseModal() {
     setRoomForm({
-      name: "",
+      name: '',
       participants: [],
-    });
-    onClose();
-    reset();
+    })
+    onClose()
+    reset()
   }
 
   return (
     <Modal
       isCentered
-      size={"2xl"}
+      size={'2xl'}
       isOpen={isOpen}
       onClose={handleCloseModal}
       closeOnOverlayClick={false}
@@ -90,5 +90,5 @@ export default function CreateRoomForm({ isOpen, onClose }) {
         </ModalBody>
       </ModalContent>
     </Modal>
-  );
+  )
 }

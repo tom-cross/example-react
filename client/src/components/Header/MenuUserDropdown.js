@@ -7,48 +7,48 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
-} from "@chakra-ui/react";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { DEFAULT_AVATAR, PAGE_KEYS } from "../../constants";
-import { CHECKING_AUTH, ENUM_STATUS, genericAction } from "../../redux/actions";
-import { userSelector } from "../../redux/selector";
-import { MemoryClient } from "../../utils";
+} from '@chakra-ui/react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { DEFAULT_AVATAR, PAGE_KEYS } from '../../constants'
+import { CHECKING_AUTH, ENUM_STATUS, genericAction } from '../../redux/actions'
+import { userSelector } from '../../redux/selector'
+import { MemoryClient } from '../../utils'
 
 export default function MenuUserDropdown() {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const dataUser = useSelector(userSelector);
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const dataUser = useSelector(userSelector)
 
   const avatarUrl =
-    MemoryClient.get("c_avt") || dataUser.user?.avatarUrl || DEFAULT_AVATAR;
+    MemoryClient.get('c_avt') || dataUser.user?.avatarUrl || DEFAULT_AVATAR
 
   const handleLogout = async () => {
-    MemoryClient.clearAll();
-    history.push(PAGE_KEYS.LoginPage);
-    dispatch(genericAction(CHECKING_AUTH, ENUM_STATUS.PUSH_NORMAL, false));
-  };
+    MemoryClient.clearAll()
+    history.push(PAGE_KEYS.LoginPage)
+    dispatch(genericAction(CHECKING_AUTH, ENUM_STATUS.PUSH_NORMAL, false))
+  }
 
   return (
     <Menu>
       <MenuButton
         as={Button}
-        rounded={"full"}
-        variant={"link"}
-        cursor={"pointer"}
+        rounded={'full'}
+        variant={'link'}
+        cursor={'pointer'}
         minW={0}
       >
-        <Avatar size={"sm"} src={avatarUrl} />
+        <Avatar size={'sm'} src={avatarUrl} />
       </MenuButton>
-      <MenuList alignItems={"center"}>
+      <MenuList alignItems={'center'}>
         <br />
         <Center>
-          <Avatar size={"2xl"} src={avatarUrl} />
+          <Avatar size={'2xl'} src={avatarUrl} />
         </Center>
         <br />
         <Center>
-          <p>{dataUser?.user?.email || ""}</p>
+          <p>{dataUser?.user?.email || ''}</p>
         </Center>
         <br />
         <MenuDivider />
@@ -60,5 +60,5 @@ export default function MenuUserDropdown() {
         </MenuItem>
       </MenuList>
     </Menu>
-  );
+  )
 }

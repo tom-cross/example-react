@@ -1,6 +1,6 @@
-import React from 'react';
-import SuggestItem from './SuggestItem';
-import styles from './header.module.css';
+import React from 'react'
+import SuggestItem from './SuggestItem'
+import styles from './header.module.css'
 
 export default function SuggestList({ results = [] }) {
   return (
@@ -10,8 +10,8 @@ export default function SuggestList({ results = [] }) {
       {results.length ? (
         results.map((u, i) => <SuggestItem key={i} {...u} />)
       ) : (
-        <div className='flex p-2 items-center justify-center'>No results</div>
+        <div className="flex p-2 items-center justify-center">No results</div>
       )}
     </div>
-  );
+  )
 }

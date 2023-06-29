@@ -1,6 +1,6 @@
-import React from 'react';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { classes } from '../utils';
+import React from 'react'
+import { AiOutlinePlus } from 'react-icons/ai'
+import { classes } from '../utils'
 
 export default function IconSticky({
   icon: Icon,
@@ -12,13 +12,12 @@ export default function IconSticky({
   return (
     <div
       onClick={fn}
-      className={
-			classes(
+      className={classes(
         'w-16 h-16 flex items-center justify-center rounded-full fixed right-10 bottom-10 cursor-pointer',
-        customClass
+        customClass,
       )}
     >
       {Icon || <AiOutlinePlus size={sizeDefault} color={colorDefault} />}
     </div>
-  );
+  )
 }

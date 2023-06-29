@@ -1,9 +1,9 @@
-const HttpException = require('./HttpException');
+const HttpException = require('./HttpException')
 
 class ForbiddenException extends HttpException {
   constructor() {
-    super('Refuses to authorize', 403);
+    super('Refuses to authorize', 403)
   }
 }
 
-module.exports = ForbiddenException;
+module.exports = ForbiddenException

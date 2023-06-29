@@ -1,11 +1,11 @@
-import { ENUM_STATUS, genericType, SET_USER, UPDATE_USER } from "../actions";
+import { ENUM_STATUS, genericType, SET_USER, UPDATE_USER } from '../actions'
 
 const initReducer = {
   user: null,
   loading: false,
-  currentType: "",
-  messageError: "",
-};
+  currentType: '',
+  messageError: '',
+}
 
 export const UserReducer = (state = initReducer, { type, payload }) => {
   switch (type) {
@@ -15,16 +15,16 @@ export const UserReducer = (state = initReducer, { type, payload }) => {
         ...state,
         loading: false,
         currentType: type,
-        messageError: "",
+        messageError: '',
         user: payload || state.user,
-      };
+      }
     case genericType(UPDATE_USER, ENUM_STATUS.FETCHING):
       return {
         ...state,
         loading: true,
         currentType: type,
-        messageError: "",
-      };
+        messageError: '',
+      }
 
     case genericType(UPDATE_USER, ENUM_STATUS.FAILURE):
       return {
@@ -32,9 +32,9 @@ export const UserReducer = (state = initReducer, { type, payload }) => {
         loading: false,
         currentType: type,
         messageError: payload,
-      };
+      }
 
     default:
-      return Object.assign({}, state);
+      return Object.assign({}, state)
   }
-};
+}

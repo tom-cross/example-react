@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 import {
   Button,
@@ -7,56 +7,56 @@ import {
   Link,
   PinInput,
   PinInputField,
-} from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { ENUM_STATUS, genericAction, VERITY_OTP } from "../redux/actions";
-import { authenticatedSelector, authLoadingSelector } from "../redux/selector";
-import { useHistory, useLocation } from "react-router-dom";
-import { AuthLayout } from "../layout";
-import { PAGE_KEYS } from "../constants";
+} from '@chakra-ui/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ENUM_STATUS, genericAction, VERITY_OTP } from '../redux/actions'
+import { authenticatedSelector, authLoadingSelector } from '../redux/selector'
+import { useHistory, useLocation } from 'react-router-dom'
+import { AuthLayout } from '../layout'
+import { PAGE_KEYS } from '../constants'
 
 export default function VerifyOtpForgotPassPage() {
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const history = useHistory();
-  const isAuthenticated = useSelector(authenticatedSelector);
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const history = useHistory()
+  const isAuthenticated = useSelector(authenticatedSelector)
 
-  const loading = useSelector(authLoadingSelector);
+  const loading = useSelector(authLoadingSelector)
 
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState('')
 
   const onSubmit = () =>
     dispatch(
       genericAction(VERITY_OTP, ENUM_STATUS.FETCHING, {
         data: {
           otp,
-          email: new URLSearchParams(location.search).get("e") || "",
+          email: new URLSearchParams(location.search).get('e') || '',
         },
         history,
-      })
-    );
+      }),
+    )
 
   useEffect(() => {
     if (isAuthenticated) {
-      const { from } = location || { from: { pathname: "/" } };
-      history.push(from);
+      const { from } = location || { from: { pathname: '/' } }
+      history.push(from)
     }
-  }, [isAuthenticated, location]);
+  }, [isAuthenticated, location])
 
   return (
     <AuthLayout
-      title={"Verify OTP!"}
+      title={'Verify OTP!'}
       footer={
         <Stack spacing={6}>
           <Button
             isLoading={loading}
             onClick={onSubmit}
-            colorScheme={"blue"}
-            variant={"solid"}
+            colorScheme={'blue'}
+            variant={'solid'}
           >
             Verify
           </Button>
-          <Flex justifyContent={"space-between"}>
+          <Flex justifyContent={'space-between'}>
             <Link href={PAGE_KEYS.ForgotPassword}>Forgot password!</Link>
             <Link href={PAGE_KEYS.LoginPage}>Login account!</Link>
           </Flex>
@@ -64,7 +64,7 @@ export default function VerifyOtpForgotPassPage() {
       }
     >
       <Stack>
-        <Flex justifyContent={"space-between"} className={"pb-10"}>
+        <Flex justifyContent={'space-between'} className={'pb-10'}>
           <PinInput
             autoFocus
             otp
@@ -81,5 +81,5 @@ export default function VerifyOtpForgotPassPage() {
         </Flex>
       </Stack>
     </AuthLayout>
-  );
+  )
 }

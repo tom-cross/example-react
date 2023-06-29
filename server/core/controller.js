@@ -1,4 +1,4 @@
-const ConsoleLogger = require("./consoleLogger");
+const ConsoleLogger = require('./consoleLogger')
 
 /**
  * @Controller
@@ -10,9 +10,9 @@ const ConsoleLogger = require("./consoleLogger");
 class Controller {
   constructor() {
     ConsoleLogger.warn(
-      `Instance Controller ${this.constructor.name} has loaded!`
-    );
+      `Instance Controller ${this.constructor.name} has loaded!`,
+    )
   }
 }
 
-module.exports = Controller;
+module.exports = Controller

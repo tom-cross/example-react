@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import {
   AccordionButton,
   Text,
@@ -8,23 +8,23 @@ import {
   Box,
   Button,
   useDisclosure,
-} from "@chakra-ui/react";
-import React from "react";
-import AlertDeleteTodo from "./AlertDeleteTodo";
-import ModalEdit from "./ModalEdit";
-import TodoBadge from "./TodoBadge";
+} from '@chakra-ui/react'
+import React from 'react'
+import AlertDeleteTodo from './AlertDeleteTodo'
+import ModalEdit from './ModalEdit'
+import TodoBadge from './TodoBadge'
 
 export default function TodoItem({ todo }) {
   const {
     isOpen: openEdit,
     onOpen: onOpenEdit,
     onClose: onCloseEdit,
-  } = useDisclosure();
+  } = useDisclosure()
   const {
     isOpen: openDelete,
     onOpen: onOpenDelete,
     onClose: onCloseDelete,
-  } = useDisclosure();
+  } = useDisclosure()
   return (
     <AccordionItem key={todo._id} className="w-full">
       <h2>
@@ -66,5 +66,5 @@ export default function TodoItem({ todo }) {
         </div>
       </AccordionPanel>
     </AccordionItem>
-  );
+  )
 }

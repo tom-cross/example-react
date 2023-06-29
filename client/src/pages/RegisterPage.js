@@ -1,19 +1,19 @@
-import React from "react";
-import { Button, Flex, Stack } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
-import { AuthLayout } from "../layout";
-import { useForm } from "react-hook-form";
-import { ButtonRoute, ControlInput } from "../components";
-import { useDispatch, useSelector } from "react-redux";
-import { ENUM_STATUS, genericAction, REGISTER } from "../redux/actions";
-import { authLoadingSelector } from "../redux/selector";
-import { PAGE_KEYS, REGEX_EMAIL } from "../constants";
+import React from 'react'
+import { Button, Flex, Stack } from '@chakra-ui/react'
+import { useHistory } from 'react-router-dom'
+import { AuthLayout } from '../layout'
+import { useForm } from 'react-hook-form'
+import { ButtonRoute, ControlInput } from '../components'
+import { useDispatch, useSelector } from 'react-redux'
+import { ENUM_STATUS, genericAction, REGISTER } from '../redux/actions'
+import { authLoadingSelector } from '../redux/selector'
+import { PAGE_KEYS, REGEX_EMAIL } from '../constants'
 
 export default function RegisterPage() {
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const history = useHistory()
+  const dispatch = useDispatch()
 
-  const loading = useSelector(authLoadingSelector);
+  const loading = useSelector(authLoadingSelector)
 
   const {
     control,
@@ -22,29 +22,29 @@ export default function RegisterPage() {
     watch,
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
-      rePassword: "",
+      email: '',
+      password: '',
+      rePassword: '',
     },
-  });
+  })
 
   const onSubmit = (data) =>
-    dispatch(genericAction(REGISTER, ENUM_STATUS.FETCHING, { data, history }));
+    dispatch(genericAction(REGISTER, ENUM_STATUS.FETCHING, { data, history }))
 
   return (
     <AuthLayout
-      title={"Register new account!"}
+      title={'Register new account!'}
       footer={
         <Stack spacing={6}>
           <Button
             isLoading={loading}
             onClick={handleSubmit(onSubmit)}
-            colorScheme={"blue"}
-            variant={"solid"}
+            colorScheme={'blue'}
+            variant={'solid'}
           >
             Register
           </Button>
-          <Flex justifyContent={"flex-end"}>
+          <Flex justifyContent={'flex-end'}>
             <ButtonRoute route={PAGE_KEYS.LoginPage}>
               Login account!
             </ButtonRoute>
@@ -54,48 +54,48 @@ export default function RegisterPage() {
     >
       <Stack>
         <ControlInput
-          name={"email"}
+          name={'email'}
           control={control}
           rules={{
-            required: "Email is required!",
-            pattern: { value: REGEX_EMAIL, message: "Email invalid!" },
+            required: 'Email is required!',
+            pattern: { value: REGEX_EMAIL, message: 'Email invalid!' },
           }}
-          label={"Email address"}
+          label={'Email address'}
           errorMessage={errors?.email?.message}
         />
 
         <ControlInput
-          name={"password"}
+          name={'password'}
           control={control}
           isPassword
           rules={{
-            required: "Password is required!",
+            required: 'Password is required!',
             minLength: {
               value: 8,
-              message: "Password must have at least 8 characters!",
+              message: 'Password must have at least 8 characters!',
             },
           }}
-          label={"Password"}
+          label={'Password'}
           errorMessage={errors?.password?.message}
         />
 
         <ControlInput
-          name={"rePassword"}
+          name={'rePassword'}
           control={control}
           isPassword
           rules={{
-            required: "Repeat password is required!",
+            required: 'Repeat password is required!',
             minLength: {
               value: 8,
-              message: "Password must have at least 8 characters!",
+              message: 'Password must have at least 8 characters!',
             },
             validate: (value) =>
-              value === watch("password") || "The passwords do not match!",
+              value === watch('password') || 'The passwords do not match!',
           }}
-          label={"Repeat Password"}
+          label={'Repeat Password'}
           errorMessage={errors?.rePassword?.message}
         />
       </Stack>
     </AuthLayout>
-  );
+  )
 }

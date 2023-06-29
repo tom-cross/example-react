@@ -1,7 +1,7 @@
-import React from "react";
-import { ControlInput } from "../../components";
-import { useForm } from "react-hook-form";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import React from 'react'
+import { ControlInput } from '../../components'
+import { useForm } from 'react-hook-form'
+import { Box, Button, Flex } from '@chakra-ui/react'
 
 export default function FormRoomName({ onNext }) {
   const {
@@ -10,30 +10,30 @@ export default function FormRoomName({ onNext }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
+      name: '',
     },
-  });
+  })
   const onSubmit = (data) => {
-    onNext(data);
-  };
+    onNext(data)
+  }
 
   return (
     <Box>
       <ControlInput
-        name={"name"}
+        name={'name'}
         control={control}
         rules={{
-          required: "Name room is required!",
+          required: 'Name room is required!',
           minLength: {
             value: 4,
-            message: "Name room must have at least 4 characters!",
+            message: 'Name room must have at least 4 characters!',
           },
           maxLength: {
             value: 50,
-            message: "Name room max 50 characters!",
+            message: 'Name room max 50 characters!',
           },
         }}
-        label={"Name room"}
+        label={'Name room'}
         errorMessage={errors?.name?.message}
       />
       <Flex className="mt-5 justify-end">
@@ -42,5 +42,5 @@ export default function FormRoomName({ onNext }) {
         </Button>
       </Flex>
     </Box>
-  );
+  )
 }

@@ -1,32 +1,32 @@
-const { Service } = require("../core");
-const { RoomRepository, UserRepository } = require("../schema");
-const { DEFAULT_AVATAR } = require("../constants");
-const { MessageRepository } = require("../schema");
-const { BadRequestException } = require("../exceptions");
+const { Service } = require('../core')
+const { RoomRepository, UserRepository } = require('../schema')
+const { DEFAULT_AVATAR } = require('../constants')
+const { MessageRepository } = require('../schema')
+const { BadRequestException } = require('../exceptions')
 
 class ChatService extends Service {
   constructor() {
-    super();
+    super()
   }
 
   async createNewRoom(data) {
     try {
-      const { name, author, lastMessage } = data;
+      const { name, author, lastMessage } = data
       return await RoomRepository.create({
         name,
         author,
         lastMessage,
-      });
+      })
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
   async getRoomByKey(key, value) {
     try {
-      return await RoomRepository.findOne({ [key]: value });
+      return await RoomRepository.findOne({ [key]: value })
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
@@ -36,23 +36,23 @@ class ChatService extends Service {
         { _id },
         {
           ...data,
-        }
-      );
+        },
+      )
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
   async deleteRoom(_id) {
     try {
-      return await RoomRepository.findByIdAndDelete({ _id });
+      return await RoomRepository.findByIdAndDelete({ _id })
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
   async getRoomsWithUser(userId) {
-    return await RoomRepository.find({ author: userId });
+    return await RoomRepository.find({ author: userId })
   }
 
   // messages
@@ -63,9 +63,9 @@ class ChatService extends Service {
         content: data.content,
         author: authorId,
         room: roomId,
-      });
+      })
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
@@ -75,20 +75,20 @@ class ChatService extends Service {
         { _id },
         {
           isDeleted: true,
-        }
-      );
+        },
+      )
     } catch (e) {
-      return e.message;
+      return e.message
     }
   }
 
   async validateCreateRoom(roomInfo) {
-    const roomExist = await this.getRoomByKey("name", roomInfo.name);
+    const roomExist = await this.getRoomByKey('name', roomInfo.name)
     if (roomExist) {
-      return new BadRequestException("Name room existing!");
+      return new BadRequestException('Name room existing!')
     }
-    return this.createNewRoom(roomInfo);
+    return this.createNewRoom(roomInfo)
   }
 }
 
-module.exports = new ChatService();
+module.exports = new ChatService()

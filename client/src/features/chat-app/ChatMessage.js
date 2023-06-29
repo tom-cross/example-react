@@ -1,23 +1,23 @@
-import { Avatar } from "@chakra-ui/react";
-import React from "react";
+import { Avatar } from '@chakra-ui/react'
+import React from 'react'
 
 export default function ChatMessage({ isMe }) {
   return (
     <div
       className={`p-3 bg-white shadow rounded-lg animate__animated 
-      ${isMe ? "animate__bounceInLeft" : "animate__bounceInRight"}`}
+      ${isMe ? 'animate__bounceInLeft' : 'animate__bounceInRight'}`}
     >
       <div
         className={`border-b flex items-start pb-2 ${
-          isMe ? "flex-row-reverse" : ""
+          isMe ? 'flex-row-reverse' : ''
         }`}
       >
         <Avatar
-          size={"sm"}
+          size={'sm'}
           name="Dan Abrahmov"
           src="https://bit.ly/dan-abramov"
         />
-        <h3 className={`text-md font-medium ${isMe ? "pr-2" : "pl-2"}`}>
+        <h3 className={`text-md font-medium ${isMe ? 'pr-2' : 'pl-2'}`}>
           font-sans
         </h3>
       </div>
@@ -29,5 +29,5 @@ export default function ChatMessage({ isMe }) {
         dog .
       </p>
     </div>
-  );
+  )
 }

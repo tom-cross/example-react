@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export function useUrlQuery() {
-  const [data, setData] = useState(undefined);
-  const location = useLocation();
+  const [data, setData] = useState(undefined)
+  const location = useLocation()
 
   const mappingQuery = () => {
-    const searchParams = new URLSearchParams(location.search).entries();
-    let _c = {};
+    const searchParams = new URLSearchParams(location.search).entries()
+    let _c = {}
     for (const [key, value] of searchParams) {
-      _c[key] = value;
+      _c[key] = value
     }
-    setData(_c);
-  };
+    setData(_c)
+  }
 
   useEffect(() => {
-    mappingQuery();
-  }, []);
+    mappingQuery()
+  }, [])
 
-  return data;
+  return data
 }

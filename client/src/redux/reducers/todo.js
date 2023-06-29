@@ -5,15 +5,15 @@ import {
   GET_ALL_TODO,
   DELETE_TODO,
   UPDATE_TODO,
-} from "../actions";
+} from '../actions'
 
 const initReducer = {
   loading: false,
-  currentType: "",
-  status: "",
+  currentType: '',
+  status: '',
   todoList: [],
-  errorMessage: "",
-};
+  errorMessage: '',
+}
 
 export const TodoReducer = (state = initReducer, { type, payload }) => {
   switch (type) {
@@ -24,7 +24,7 @@ export const TodoReducer = (state = initReducer, { type, payload }) => {
         ...state,
         currentType: type,
         loading: true,
-      };
+      }
 
     case genericType(CREATE_TODO, ENUM_STATUS.FAILURE):
     case genericType(UPDATE_TODO, ENUM_STATUS.FAILURE):
@@ -35,7 +35,7 @@ export const TodoReducer = (state = initReducer, { type, payload }) => {
         currentType: type,
         errorMessage: payload,
         loading: false,
-      };
+      }
 
     case genericType(GET_ALL_TODO, ENUM_STATUS.FETCHING):
       return {
@@ -43,7 +43,7 @@ export const TodoReducer = (state = initReducer, { type, payload }) => {
         currentType: type,
         loading: true,
         status: payload.status,
-      };
+      }
 
     case genericType(GET_ALL_TODO, ENUM_STATUS.SUCCESS):
       return {
@@ -51,8 +51,8 @@ export const TodoReducer = (state = initReducer, { type, payload }) => {
         currentType: type,
         loading: false,
         todoList: payload,
-      };
+      }
     default:
-      return Object.assign({}, state);
+      return Object.assign({}, state)
   }
-};
+}

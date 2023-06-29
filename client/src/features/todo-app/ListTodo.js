@@ -1,11 +1,11 @@
-import React from "react";
-import { Accordion, Alert, AlertIcon } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { todoSelector } from "../../redux/selector";
-import TodoItem from "./TodoItem";
+import React from 'react'
+import { Accordion, Alert, AlertIcon } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
+import { todoSelector } from '../../redux/selector'
+import TodoItem from './TodoItem'
 
 export default function ListTodo() {
-  const { todoList, loading } = useSelector(todoSelector);
+  const { todoList, loading } = useSelector(todoSelector)
 
   return (
     <div className="mt-10 w-full">
@@ -21,5 +21,5 @@ export default function ListTodo() {
         )}
       </Accordion>
     </div>
-  );
+  )
 }

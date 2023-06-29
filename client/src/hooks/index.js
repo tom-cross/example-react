@@ -1,2 +1,2 @@
-export * from "./useAsync";
-export * from "./useUrlQuery";
+export * from './useAsync'
+export * from './useUrlQuery'

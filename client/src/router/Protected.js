@@ -1,13 +1,13 @@
-import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { authenticatedSelector, selectorLoadingApp } from "../redux/selector";
-import { FallbackLoading } from "../components";
+import { Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { authenticatedSelector, selectorLoadingApp } from '../redux/selector'
+import { FallbackLoading } from '../components'
 
 export function PrivateRoute({ component: Component, ...rest }) {
-  const isAuthenticated = useSelector(authenticatedSelector);
-  const loading = useSelector(selectorLoadingApp);
+  const isAuthenticated = useSelector(authenticatedSelector)
+  const loading = useSelector(selectorLoadingApp)
   if (loading) {
-    return <FallbackLoading />;
+    return <FallbackLoading />
   }
 
   return (
@@ -17,12 +17,12 @@ export function PrivateRoute({ component: Component, ...rest }) {
         if (!isAuthenticated) {
           return (
             <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
+              to={{ pathname: '/login', state: { from: props.location } }}
             />
-          );
+          )
         }
-        return <Component {...props} />;
+        return <Component {...props} />
       }}
     />
-  );
+  )
 }

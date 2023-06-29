@@ -1,24 +1,24 @@
-import React from "react";
-import { Flex, Button, Heading } from "@chakra-ui/react";
-import { TiThSmall } from "react-icons/ti";
-import { VscCheckAll, VscPreview } from "react-icons/vsc";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { IoPlaySkipForwardOutline } from "react-icons/io5";
-import { ENUM_STATUS, genericAction, GET_ALL_TODO } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { todoSelector } from "../../redux/selector";
-import { ENUM_STATUS_TODO } from "../../constants";
+import React from 'react'
+import { Flex, Button, Heading } from '@chakra-ui/react'
+import { TiThSmall } from 'react-icons/ti'
+import { VscCheckAll, VscPreview } from 'react-icons/vsc'
+import { MdOutlineWorkOutline } from 'react-icons/md'
+import { IoPlaySkipForwardOutline } from 'react-icons/io5'
+import { ENUM_STATUS, genericAction, GET_ALL_TODO } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { todoSelector } from '../../redux/selector'
+import { ENUM_STATUS_TODO } from '../../constants'
 
 export default function SideFilter() {
-  const dispatch = useDispatch();
-  const { status } = useSelector(todoSelector);
+  const dispatch = useDispatch()
+  const { status } = useSelector(todoSelector)
 
-  function filterTodo(status = "") {
-    dispatch(genericAction(GET_ALL_TODO, ENUM_STATUS.FETCHING, { status }));
+  function filterTodo(status = '') {
+    dispatch(genericAction(GET_ALL_TODO, ENUM_STATUS.FETCHING, { status }))
   }
 
   function resolveVariant(status, match) {
-    return status === match ? "solid" : "outline";
+    return status === match ? 'solid' : 'outline'
   }
 
   return (
@@ -76,5 +76,5 @@ export default function SideFilter() {
         </Button>
       </div>
     </Flex>
-  );
+  )
 }
