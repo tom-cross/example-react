@@ -10,7 +10,7 @@ export default function Logo() {
       className={'font-bold text-xl cursor-pointer'}
       onClick={() => history.push(PAGE_KEYS.HomePage)}
     >
-      Peanut
+      Some Logo
     </Box>
   )
 }

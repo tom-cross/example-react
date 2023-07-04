@@ -22,15 +22,8 @@
       "error",
       { "singleQuote": true, "semi": false, "trailingComma": "all" }
     ],
-    // The below can be removed when https://github.com/prettier/prettier/milestone/5 is resolved
     "arrow-parens": 0,
-    "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["src/**/*.spec.js", "webpack.config.js", "src/setupTests.js"]
-      }
-    ]
+    "import/prefer-default-export": 0
   }
 }
 
