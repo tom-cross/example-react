@@ -95,7 +95,7 @@ We are using template Create React App.
 ```bash
 # development
 
-$ npm run start | yarn start
+$ npm run dev | yarn dev
 
 # build mode
 
@@ -109,7 +109,7 @@ $ npm run build | yarn build
 ```bash
 # development
 
-$ npm run start:dev | yarn start:dev
+$ npm run dev | yarn dev
 
 # production mode
 
